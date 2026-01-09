@@ -33,17 +33,6 @@
     <!-- title : titre qui apparaît dans l'onglet du navigateur -->
     <title>ANDRONIS ROBOTICS - Voltaire One</title>
 
-     <!-- ============================================
-         AJOUT DE LA FAVICONE
-         ============================================ -->
-    <!-- 
-         Note : J'ai généré une favicone vectorielle (SVG) légère qui reprend
-         votre forme hexagonale et votre couleur bronze (#b8956a).
-         Si vous voulez remettre votre image, remplacez tout le contenu de href="..." 
-         par : data:image/svg+xml;utf8,VOTRE_CODE_SVG_COMPLET
-    -->
-    <link rel="icon" type="image/png" href="https://i.imgur.com/Vt2A5EB.png">
-
     <!-- ============================================
          PARTIE 4 : LIENS VERS LES FEUILLES DE STYLE EXTERNES
          ============================================ -->
@@ -194,6 +183,44 @@
         svg { 
             display: block; 
         }
+        
+        /* ============================================
+           STYLE DU MODAL DE RÉSERVATION
+           ============================================ */
+        /* Styles pour les champs de formulaire dans le modal */
+        .modal-content .form-control {
+            color: #f5f5f5;
+            background-color: var(--dark);
+        }
+        
+        .modal-content .form-control:focus {
+            background-color: var(--dark);
+            color: #f5f5f5;
+            border-color: var(--bronze);
+            box-shadow: 0 0 0 0.25rem rgba(184, 149, 106, 0.25);
+        }
+        
+        .modal-content .form-control::placeholder {
+            color: rgba(245, 245, 245, 0.5);
+        }
+        
+        /* Style pour le bouton de fermeture */
+        .btn-close-white {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+        
+        /* Style pour le bouton secondaire */
+        .btn-secondary {
+            background-color: var(--grey);
+            border-color: var(--grey);
+            color: #f5f5f5;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #3d3d3d;
+            border-color: #3d3d3d;
+            color: #f5f5f5;
+        }
     </style>
 </head>
 
@@ -230,11 +257,11 @@
             <!-- style="letter-spacing: 0.05em;" : espacement entre les lettres (style inline) -->
             <p class="fs-4 fw-light mb-5" style="letter-spacing: 0.05em;">L'automation élevée au rang d'art</p>
             
-            <!-- <a> : lien cliquable (bouton) -->
-            <!-- href="#contact" : fait défiler la page jusqu'à l'élément avec id="contact" -->
+            <!-- <button> : bouton qui ouvre le modal de réservation -->
+            <!-- data-bs-toggle="modal" : indique à Bootstrap d'ouvrir un modal -->
+            <!-- data-bs-target="#reservationModal" : identifie quel modal ouvrir -->
             <!-- class="btn btn-bronze" : applique les styles de bouton Bootstrap + notre style bronze personnalisé -->
-            <!-- class="text-decoration-none" : enlève le soulignement du lien -->
-            <a href="#contact" class="btn btn-bronze text-decoration-none">Réserver mon Voltaire</a>
+            <button type="button" class="btn btn-bronze" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver mon Voltaire</button>
         </div>
     </section>
 
@@ -423,7 +450,7 @@
             <!-- class="fs-5" : taille de police 5 -->
             <!-- class="fw-bold" : poids de police gras -->
             <!-- style="padding: 1.2rem 3.5rem;" : espacement interne personnalisé -->
-            <a href="mailto:contact@aeterna-robotics.fr" class="btn btn-bronze text-decoration-none fs-5 fw-bold" style="padding: 1.2rem 3.5rem;">Réserver Maintenant - Édition Fondateur</a>
+            <a href="mailto:contact@andronis.fr" class="btn btn-bronze text-decoration-none fs-5 fw-bold" style="padding: 1.2rem 3.5rem;">Réserver Maintenant - Édition Fondateur</a>
         </div>
     </section>
 
@@ -447,10 +474,119 @@
         </div>
     </footer>
 
+    <!-- ============================================
+         MODAL DE RÉSERVATION
+         ============================================ -->
+    <!-- Modal Bootstrap pour le formulaire de réservation -->
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark-custom border border-1" style="border-color: var(--bronze) !important;">
+                <!-- En-tête du modal -->
+                <div class="modal-header border-bottom" style="border-color: var(--bronze) !important;">
+                    <h2 class="modal-title text-bronze" id="reservationModalLabel" style="font-family: 'Cormorant Garamond', serif;">Réserver mon Voltaire</h2>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                
+                <!-- Corps du modal -->
+                <div class="modal-body p-4">
+                    <p class="text-white mb-4" style="opacity: 0.9;">Les premières unités "Founders Edition" sont disponibles en pré-commande limitée</p>
+                    
+                    <!-- Formulaire de réservation -->
+                    <form id="reservationForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="firstName" class="form-label text-bronze">Prénom *</label>
+                                <input type="text" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="firstName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label text-bronze">Nom *</label>
+                                <input type="text" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-bronze">Email *</label>
+                            <input type="email" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="email" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone" class="form-label text-bronze">Téléphone</label>
+                            <input type="tel" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="phone">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label text-bronze">Message (optionnel)</label>
+                            <textarea class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="message" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="text-white small" style="opacity: 0.8;">
+                                <span class="text-bronze fw-semibold">À partir de 25 000 €</span><br>
+                                Acompte de réservation de 500 € remboursable
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Pied du modal -->
+                <div class="modal-footer border-top" style="border-color: var(--bronze) !important;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" form="reservationForm" class="btn btn-bronze">Envoyer ma réservation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <!-- ============================================
      FIN DU CORPS DU DOCUMENT
      ============================================ -->
 </body>
+
+    <!-- ============================================
+         SCRIPTS BOOTSTRAP ET JAVASCRIPT
+         ============================================ -->
+    <!-- Bootstrap JS Bundle (nécessaire pour les modals et autres composants interactifs) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Script personnalisé pour le formulaire de réservation -->
+    <script>
+        // Gestion de la soumission du formulaire
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupération des données du formulaire
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Création du lien mailto avec les données
+            const subject = encodeURIComponent('Réservation Voltaire One - Founders Edition');
+            const body = encodeURIComponent(
+                `Bonjour,\n\n` +
+                `Je souhaite réserver un Voltaire One - Founders Edition.\n\n` +
+                `Informations de contact :\n` +
+                `- Prénom : ${formData.firstName}\n` +
+                `- Nom : ${formData.lastName}\n` +
+                `- Email : ${formData.email}\n` +
+                `- Téléphone : ${formData.phone || 'Non renseigné'}\n\n` +
+                `${formData.message ? `Message :\n${formData.message}\n\n` : ''}` +
+                `Cordialement`
+            );
+            
+            // Ouverture du client de messagerie
+            window.location.href = `mailto:contact@andronis.fr?subject=${subject}&body=${body}`;
+            
+            // Fermeture du modal après un court délai
+            setTimeout(function() {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
+                modal.hide();
+            }, 500);
+        });
+    </script>
 
 <!-- ============================================
      FIN DU DOCUMENT HTML
