@@ -92,7 +92,8 @@
         /* .hero : classe CSS pour la grande bannière en haut de la page */
         .hero { 
             min-height: 100vh;  /* Hauteur minimale = 100% de la hauteur de l'écran (viewport height) */
-            padding-top: 80px;  /* Compensation pour la navbar fixe */
+            padding-top: 100px;  /* Compensation pour la navbar fixe (augmenté pour éviter le chevauchement) */
+            margin-top: 0;  /* Assure qu'il n'y a pas de marge supplémentaire */
             /* background : image de fond avec un dégradé sombre par-dessus pour améliorer la lisibilité */
             background: linear-gradient(rgba(10,10,10,0.4), rgba(10,10,10,0.7)), url('assets/background_optimized.png') center/cover; 
         }
@@ -234,6 +235,9 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--bronze);
             padding: 1rem 0;
+            z-index: 1030;  /* Assure que la navbar est au-dessus du contenu */
+            height: auto;
+            min-height: 70px;  /* Hauteur minimale de la navbar */
         }
         
         .navbar-custom .navbar-brand {
