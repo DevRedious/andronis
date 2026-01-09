@@ -92,6 +92,7 @@
         /* .hero : classe CSS pour la grande bannière en haut de la page */
         .hero { 
             min-height: 100vh;  /* Hauteur minimale = 100% de la hauteur de l'écran (viewport height) */
+            padding-top: 80px;  /* Compensation pour la navbar fixe */
             /* background : image de fond avec un dégradé sombre par-dessus pour améliorer la lisibilité */
             background: linear-gradient(rgba(10,10,10,0.4), rgba(10,10,10,0.7)), url('assets/background_optimized.png') center/cover; 
         }
@@ -224,6 +225,37 @@
             border-color: #3d3d3d;
             color: #f5f5f5;
         }
+        
+        /* ============================================
+           STYLE DE LA NAVIGATION (HEADER)
+           ============================================ */
+        .navbar-custom {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--bronze);
+            padding: 1rem 0;
+        }
+        
+        .navbar-custom .navbar-brand {
+            color: var(--bronze);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .navbar-custom .navbar-brand:hover {
+            color: var(--bronze);
+            opacity: 0.8;
+        }
+        
+        .navbar-custom .navbar-toggler {
+            border-color: var(--bronze);
+        }
+        
+        .navbar-custom .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28184, 149, 106, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
     </style>
 </head>
 
@@ -232,6 +264,27 @@
      ============================================ -->
 <!-- La balise <body> contient tout le contenu visible de la page web -->
 <body>
+
+    <!-- ============================================
+         NAVIGATION (HEADER)
+         ============================================ -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">ANDRONIS ROBOTICS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-bronze" data-bs-toggle="modal" data-bs-target="#caracteristiquesModal">
+                            Caractéristiques
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!-- ============================================
          SECTION 1 : HERO (Bannière principale)
@@ -535,6 +588,163 @@
                 <div class="modal-footer border-top" style="border-color: var(--bronze) !important;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" form="reservationForm" class="btn btn-bronze">Envoyer ma réservation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MODAL DES CARACTÉRISTIQUES TECHNIQUES
+         ============================================ -->
+    <div class="modal fade" id="caracteristiquesModal" tabindex="-1" aria-labelledby="caracteristiquesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark-custom border border-1" style="border-color: var(--bronze) !important;">
+                <!-- En-tête du modal -->
+                <div class="modal-header border-bottom" style="border-color: var(--bronze) !important;">
+                    <h2 class="modal-title text-bronze" id="caracteristiquesModalLabel" style="font-family: 'Cormorant Garamond', serif;">Caractéristiques Techniques - Voltaire One</h2>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                
+                <!-- Corps du modal -->
+                <div class="modal-body p-4">
+                    <div class="row">
+                        <!-- Colonne 1 : Matériaux -->
+                        <div class="col-md-6 mb-4">
+                            <div class="border-bronze-left p-3 h-100">
+                                <h3 class="text-bronze mb-3" style="font-family: 'Cormorant Garamond', serif;">
+                                    <span style="font-size: 1.5rem;">🔩</span> Matériaux
+                                </h3>
+                                <ul class="text-white" style="opacity: 0.9; line-height: 1.8;">
+                                    <li><strong class="text-bronze">Aluminium Aéronautique 7075-T6</strong><br>
+                                        <small style="opacity: 0.8;">Alliage haute résistance utilisé dans l'industrie aéronautique. Rapport résistance/poids exceptionnel, résistance à la corrosion et durabilité maximale.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Cuivre Brossé</strong><br>
+                                        <small style="opacity: 0.8;">Accents en cuivre de qualité horlogère, finition brossée pour un rendu premium. Propriétés antibactériennes naturelles et conductivité thermique optimale.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Verre Trempé Gorilla Glass</strong><br>
+                                        <small style="opacity: 0.8;">Protection de dernière génération, résistance aux chocs multipliée par 4 par rapport au verre standard. Traitement anti-empreintes et anti-reflets.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Fibre de Carbone Structurelle</strong><br>
+                                        <small style="opacity: 0.8;">Renforts en fibre de carbone pour les éléments critiques. Rigidité maximale avec poids minimal.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Colonne 2 : Technologies -->
+                        <div class="col-md-6 mb-4">
+                            <div class="border-bronze-left p-3 h-100">
+                                <h3 class="text-bronze mb-3" style="font-family: 'Cormorant Garamond', serif;">
+                                    <span style="font-size: 1.5rem;">⚙️</span> Technologies
+                                </h3>
+                                <ul class="text-white" style="opacity: 0.9; line-height: 1.8;">
+                                    <li><strong class="text-bronze">Actionneurs Magnétostrictifs de Nouvelle Génération</strong><br>
+                                        <small style="opacity: 0.8;">Technologie 2026 : Précision sub-nanométrique (0.1nm), temps de réponse < 0.5ms. Actionneurs à onde acoustique de surface pour une dextérité inégalée, inspirés des mécanismes horlogers suisses de pointe.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Batterie à État Solide Structurelle</strong><br>
+                                        <small style="opacity: 0.8;">Technologie 2026 : Batterie lithium-soufre à électrolyte solide. Densité énergétique révolutionnaire de 500 Wh/kg. 30 heures d'autonomie, charge ultra-rapide 80% en 15 minutes. Sécurité maximale, pas de risque d'incendie.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Système de Perception Multi-Modale 2026</strong><br>
+                                        <small style="opacity: 0.8;">LIDAR FMCW nouvelle génération (résolution 0.1mm), caméras 8K avec HDR et vision hyperspectrale, capteurs de force quantiques, réseau de microphones avec IA de séparation de sources. Fusion sensorielle temps réel avec latence < 5ms.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Connectivité 6G Pré-Commerciale & Wi-Fi 7</strong><br>
+                                        <small style="opacity: 0.8;">Technologie 2026 : Support 6G avec latence < 1ms et bande passante 1 Tbps. Wi-Fi 7 (802.11be) pour débits multi-Gigabit. Bluetooth 5.4 avec audio spatial. Réseau maillé autonome pour communication robot-robot.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Refroidissement Quantique Passif</strong><br>
+                                        <small style="opacity: 0.8;">Innovation 2026 : Système de refroidissement par effet tunnel quantique. Dissipation thermique optimale sans ventilateurs, fonctionnement silencieux garanti.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Colonne 3 : Conception -->
+                        <div class="col-md-6 mb-4">
+                            <div class="border-bronze-left p-3 h-100">
+                                <h3 class="text-bronze mb-3" style="font-family: 'Cormorant Garamond', serif;">
+                                    <span style="font-size: 1.5rem;">🎨</span> Conception
+                                </h3>
+                                <ul class="text-white" style="opacity: 0.9; line-height: 1.8;">
+                                    <li><strong class="text-bronze">Design Français</strong><br>
+                                        <small style="opacity: 0.8;">Conçu à Paris par notre équipe d'ingénieurs et designers. Esthétique minimaliste inspirée du design français contemporain.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Assemblage Artisanal</strong><br>
+                                        <small style="opacity: 0.8;">Assemblé dans nos ateliers en Rhône-Alpes. Chaque unité est vérifiée manuellement selon les standards de qualité les plus stricts.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Certification Made in France</strong><br>
+                                        <small style="opacity: 0.8;">Plus de 60% de la valeur ajoutée réalisée en France. Traçabilité complète des composants et matériaux.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Écoconception</strong><br>
+                                        <small style="opacity: 0.8;">95% des matériaux recyclables. Empreinte carbone réduite grâce à une chaîne d'approvisionnement locale.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Colonne 4 : Intelligence Artificielle -->
+                        <div class="col-md-6 mb-4">
+                            <div class="border-bronze-left p-3 h-100">
+                                <h3 class="text-bronze mb-3" style="font-family: 'Cormorant Garamond', serif;">
+                                    <span style="font-size: 1.5rem;">🤖</span> Intelligence Artificielle "Cogito"
+                                </h3>
+                                <ul class="text-white" style="opacity: 0.9; line-height: 1.8;">
+                                    <li><strong class="text-bronze">IA Générative Multimodale "Cogito 3.0"</strong><br>
+                                        <small style="opacity: 0.8;">Technologie 2026 : Modèle de langage multimodal propriétaire avec 500 milliards de paramètres. Apprentissage continu par reinforcement learning adaptatif. Génération de solutions créatives en temps réel, compréhension du langage naturel avancée avec contexte émotionnel.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Processeur Neuromorphique Quantique</strong><br>
+                                        <small style="opacity: 0.8;">Innovation 2026 : Processeur neuromorphique à 1024 cores avec architecture quantique hybride. Traitement parallèle massif, consommation réduite de 90%. Confidentialité absolue grâce au calcul quantique local, latence < 0.1ms.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Prédiction Contextuelle par IA Générative</strong><br>
+                                        <small style="opacity: 0.8;">Technologie 2026 : Modèle prédictif génératif analysant 10 000+ variables contextuelles. Anticipation des besoins avec précision de 95%. Modélisation de scénarios multiples pour optimisation proactive des actions.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">Fusion Sensorielle Neuromorphique</strong><br>
+                                        <small style="opacity: 0.8;">Innovation 2026 : Réseau de neurones spiking pour fusion temps réel de 12 modalités sensorielles. Traitement événementiel asynchrone, consommation ultra-faible. Perception holistique avec reconstruction 3D dynamique de l'environnement.</small>
+                                    </li>
+                                    <li><strong class="text-bronze">IA Explicable et Éthique</strong><br>
+                                        <small style="opacity: 0.8;">Technologie 2026 : Système de traçabilité complète des décisions IA. Explications en langage naturel des actions entreprises. Conformité RGPD++ et éthique IA garantie par design.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Section Spécifications Techniques -->
+                    <div class="mt-4 pt-4 border-top" style="border-color: var(--bronze) !important;">
+                        <h3 class="text-bronze mb-3" style="font-family: 'Cormorant Garamond', serif;">Spécifications Techniques</h3>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <p class="text-white mb-1" style="opacity: 0.9;"><strong class="text-bronze">Dimensions :</strong></p>
+                                <p class="text-white small" style="opacity: 0.8;">Hauteur : 1.65m | Largeur : 0.45m | Profondeur : 0.35m</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <p class="text-white mb-1" style="opacity: 0.9;"><strong class="text-bronze">Poids :</strong></p>
+                                <p class="text-white small" style="opacity: 0.8;">28 kg (structure optimisée)</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <p class="text-white mb-1" style="opacity: 0.9;"><strong class="text-bronze">Puissance de calcul :</strong></p>
+                                <p class="text-white small" style="opacity: 0.8;">Processeur neuromorphique quantique 1024 cores (2026)</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <p class="text-white mb-1" style="opacity: 0.9;"><strong class="text-bronze">Précision :</strong></p>
+                                <p class="text-white small" style="opacity: 0.8;">±0.1nm en manipulation (sub-nanométrique)</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <p class="text-white mb-1" style="opacity: 0.9;"><strong class="text-bronze">Autonomie :</strong></p>
+                                <p class="text-white small" style="opacity: 0.8;">30 heures (batterie état solide 2026)</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <p class="text-white mb-1" style="opacity: 0.9;"><strong class="text-bronze">Certifications :</strong></p>
+                                <p class="text-white small" style="opacity: 0.8;">CE, RoHS, Made in France</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pied du modal -->
+                <div class="modal-footer border-top" style="border-color: var(--bronze) !important;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-bronze" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                        Réserver maintenant
+                    </button>
                 </div>
             </div>
         </div>
