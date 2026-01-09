@@ -3,6 +3,9 @@
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.jpeg filter=lfs diff=lfs merge=lfs -text
 
+# Exceptions : fichiers optimisés pour GitHub Pages (pas de LFS)
+assets/background_optimized.png !filter !diff !merge -text
+
 # Git LFS file tracking - Vidéos
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.mov filter=lfs diff=lfs merge=lfs -text
