@@ -30,6 +30,17 @@
     <!-- description : texte qui apparaît dans les résultats de recherche Google -->
     <meta name="description" content="ANDRONIS ROBOTICS - Découvrez Voltaire One, l'automation élevée au rang d'art">
     
+    <!-- Meta tags pour les réseaux sociaux (Open Graph) -->
+    <meta property="og:title" content="ANDRONIS ROBOTICS - Voltaire One">
+    <meta property="og:description" content="L'automation élevée au rang d'art. Découvrez Voltaire One, le robot français de nouvelle génération.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Meta tags Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ANDRONIS ROBOTICS - Voltaire One">
+    <meta name="twitter:description" content="L'automation élevée au rang d'art">
+    
     <!-- title : titre qui apparaît dans l'onglet du navigateur -->
     <title>ANDRONIS ROBOTICS - Voltaire One</title>
     
@@ -92,8 +103,6 @@
         /* .hero : classe CSS pour la grande bannière en haut de la page */
         .hero { 
             min-height: 100vh;  /* Hauteur minimale = 100% de la hauteur de l'écran (viewport height) */
-            padding-top: 100px;  /* Compensation pour la navbar fixe (augmenté pour éviter le chevauchement) */
-            margin-top: 0;  /* Assure qu'il n'y a pas de marge supplémentaire */
             /* background : image de fond avec un dégradé sombre par-dessus pour améliorer la lisibilité */
             background: linear-gradient(rgba(10,10,10,0.4), rgba(10,10,10,0.7)), url('assets/background_optimized.png') center/cover; 
         }
@@ -227,39 +236,6 @@
             color: #f5f5f5;
         }
         
-        /* ============================================
-           STYLE DE LA NAVIGATION (HEADER)
-           ============================================ */
-        .navbar-custom {
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--bronze);
-            padding: 1rem 0;
-            z-index: 1030;  /* Assure que la navbar est au-dessus du contenu */
-            height: auto;
-            min-height: 70px;  /* Hauteur minimale de la navbar */
-        }
-        
-        .navbar-custom .navbar-brand {
-            color: var(--bronze);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        
-        .navbar-custom .navbar-brand:hover {
-            color: var(--bronze);
-            opacity: 0.8;
-        }
-        
-        .navbar-custom .navbar-toggler {
-            border-color: var(--bronze);
-        }
-        
-        .navbar-custom .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28184, 149, 106, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
     </style>
 </head>
 
@@ -269,27 +245,8 @@
 <!-- La balise <body> contient tout le contenu visible de la page web -->
 <body>
 
-    <!-- ============================================
-         NAVIGATION (HEADER)
-         ============================================ -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">ANDRONIS ROBOTICS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-bronze" data-bs-toggle="modal" data-bs-target="#caracteristiquesModal">
-                            Caractéristiques
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <!-- Contenu principal de la page -->
+    <main>
     <!-- ============================================
          SECTION 1 : HERO (Bannière principale)
          ============================================ -->
@@ -321,7 +278,7 @@
             <!-- data-bs-toggle="modal" : indique à Bootstrap d'ouvrir un modal -->
             <!-- data-bs-target="#reservationModal" : identifie quel modal ouvrir -->
             <!-- class="btn btn-bronze" : applique les styles de bouton Bootstrap + notre style bronze personnalisé -->
-            <button type="button" class="btn btn-bronze" data-bs-toggle="modal" data-bs-target="#reservationModal">Réserver mon Voltaire</button>
+            <button type="button" class="btn btn-bronze" data-bs-toggle="modal" data-bs-target="#reservationModal" aria-label="Ouvrir le formulaire de réservation pour Voltaire One">Réserver mon Voltaire</button>
         </div>
     </section>
 
@@ -402,7 +359,7 @@
         <!-- class="bottom-0 start-0" : positionné en bas à gauche -->
         <!-- class="d-none d-md-block" : masqué sur petits écrans, visible sur écrans moyens et plus -->
         <!-- style="..." : styles inline pour la taille et l'opacité -->
-        <img src="assets/head_voltaire.svg" alt="Voltaire Robot Head" class="position-absolute bottom-0 start-0 d-none d-md-block" style="width: 45%; max-width: 850px; opacity: 1;">
+        <img src="assets/head_voltaire.svg" alt="Tête du robot Voltaire One - Design élégant et moderne" class="position-absolute bottom-0 start-0 d-none d-md-block" style="width: 45%; max-width: 850px; opacity: 1;" loading="lazy" width="850" height="auto">
 
         <!-- Conteneur principal du contenu -->
         <!-- class="position-relative" : nécessaire pour que le contenu soit au-dessus de l'image en arrière-plan -->
@@ -414,7 +371,7 @@
             <!-- class="mb-4" : marge en bas -->
             <div class="mx-auto text-center mb-4">
                 <!-- class="img-fluid" : rend l'image responsive (s'adapte à la taille de l'écran) -->
-                <img src="assets/letter_op.svg" alt="Andronis Robotics" class="img-fluid" style="max-width: 600px;">
+                <img src="assets/letter_op.svg" alt="Logo ANDRONIS ROBOTICS - Lettres OP stylisées" class="img-fluid" style="max-width: 600px;" loading="lazy" width="600" height="auto">
             </div>
 
             <!-- Grille Bootstrap pour le contenu textuel -->
@@ -467,9 +424,16 @@
                     <!-- class="text-bronze" : texte bronze -->
                     <div class="d-inline-flex align-items-center gap-2 mt-4 px-4 py-3 bg-dark-custom border border-1 text-bronze" style="border-color: var(--bronze) !important; font-size: 0.9rem; letter-spacing: 0.05em;">
                         <!-- Logo français -->
-                        <img src="assets/logo_fr.svg" alt="Drapeau français" style="width: 24px; height: auto; display: inline-block;">
+                        <img src="assets/logo_fr.svg" alt="Drapeau français - Made in France" style="width: 24px; height: auto; display: inline-block;" width="24" height="24">
                         <!-- Texte du badge -->
                         <span>Conception & Ingénierie Française</span>
+                    </div>
+                    
+                    <!-- Bouton Caractéristiques -->
+                    <div class="text-center mt-4">
+                        <button type="button" class="btn btn-bronze" data-bs-toggle="modal" data-bs-target="#caracteristiquesModal" aria-label="Voir les caractéristiques techniques détaillées de Voltaire One">
+                            Caractéristiques Techniques
+                        </button>
                     </div>
                 </div>
             </div>
@@ -513,6 +477,7 @@
             <a href="mailto:contact@andronis.fr" class="btn btn-bronze text-decoration-none fs-5 fw-bold" style="padding: 1.2rem 3.5rem;">Réserver Maintenant - Édition Fondateur</a>
         </div>
     </section>
+    </main>
 
     <!-- ============================================
          SECTION 5 : PIED DE PAGE (FOOTER)
@@ -556,27 +521,28 @@
                         <div class="row mb-3">
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <label for="firstName" class="form-label text-bronze">Prénom *</label>
-                                <input type="text" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="firstName" required>
+                                <input type="text" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="firstName" name="firstName" autocomplete="given-name" required aria-required="true">
                             </div>
                             <div class="col-md-6">
                                 <label for="lastName" class="form-label text-bronze">Nom *</label>
-                                <input type="text" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="lastName" required>
+                                <input type="text" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="lastName" name="lastName" autocomplete="family-name" required aria-required="true">
                             </div>
                         </div>
                         
                         <div class="mb-3">
                             <label for="email" class="form-label text-bronze">Email *</label>
-                            <input type="email" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="email" required>
+                            <input type="email" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="email" name="email" autocomplete="email" required aria-required="true">
                         </div>
                         
                         <div class="mb-3">
                             <label for="phone" class="form-label text-bronze">Téléphone</label>
-                            <input type="tel" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="phone">
+                            <input type="tel" class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="phone" name="phone" autocomplete="tel">
                         </div>
                         
                         <div class="mb-3">
                             <label for="message" class="form-label text-bronze">Message (optionnel)</label>
-                            <textarea class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="message" rows="4"></textarea>
+                            <textarea class="form-control bg-dark-custom text-white border border-1" style="border-color: var(--bronze) !important;" id="message" name="message" rows="4" aria-describedby="messageHelp"></textarea>
+                            <small id="messageHelp" class="form-text text-white-50" style="opacity: 0.7;">Vous pouvez nous laisser un message pour toute question ou demande spécifique.</small>
                         </div>
                         
                         <div class="mb-3">
@@ -590,8 +556,8 @@
                 
                 <!-- Pied du modal -->
                 <div class="modal-footer border-top" style="border-color: var(--bronze) !important;">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" form="reservationForm" class="btn btn-bronze">Envoyer ma réservation</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Annuler la réservation">Annuler</button>
+                    <button type="submit" form="reservationForm" class="btn btn-bronze" aria-label="Envoyer le formulaire de réservation">Envoyer ma réservation</button>
                 </div>
             </div>
         </div>
@@ -745,8 +711,8 @@
                 
                 <!-- Pied du modal -->
                 <div class="modal-footer border-top" style="border-color: var(--bronze) !important;">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button type="button" class="btn btn-bronze" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Fermer le modal des caractéristiques">Fermer</button>
+                    <button type="button" class="btn btn-bronze" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#reservationModal" aria-label="Ouvrir le formulaire de réservation">
                         Réserver maintenant
                     </button>
                 </div>
@@ -768,8 +734,10 @@
     <!-- Script personnalisé pour le formulaire de réservation -->
     <script>
         // Gestion de la soumission du formulaire
-        document.getElementById('reservationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        const reservationForm = document.getElementById('reservationForm');
+        if (reservationForm) {
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
             
             // Récupération des données du formulaire
             const formData = {
@@ -797,12 +765,18 @@
             // Ouverture du client de messagerie
             window.location.href = `mailto:contact@andronis.fr?subject=${subject}&body=${body}`;
             
-            // Fermeture du modal après un court délai
-            setTimeout(function() {
-                const modal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
-                modal.hide();
-            }, 500);
-        });
+                // Fermeture du modal après un court délai
+                setTimeout(function() {
+                    const modalElement = document.getElementById('reservationModal');
+                    if (modalElement) {
+                        const modal = bootstrap.Modal.getInstance(modalElement);
+                        if (modal) {
+                            modal.hide();
+                        }
+                    }
+                }, 500);
+            });
+        }
     </script>
 
 <!-- ============================================
