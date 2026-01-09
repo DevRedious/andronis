@@ -1,0 +1,447 @@
+<!-- ============================================
+     PARTIE 1 : DÉCLARATION DU TYPE DE DOCUMENT
+     ============================================ -->
+<!-- Cette ligne indique au navigateur qu'il s'agit d'un document HTML5 -->
+<!DOCTYPE html>
+
+<!-- ============================================
+     PARTIE 2 : BALISE RACINE HTML
+     ============================================ -->
+<!-- La balise <html> est la racine de tout le document -->
+<!-- lang="fr" indique que la langue principale du site est le français -->
+<html lang="fr">
+
+<!-- ============================================
+     PARTIE 3 : EN-TÊTE DU DOCUMENT (HEAD)
+     ============================================ -->
+<!-- La section <head> contient les métadonnées (informations sur la page) -->
+<!-- Ces informations ne sont pas visibles sur la page mais sont importantes pour le navigateur et les moteurs de recherche -->
+<head>
+    
+    <!-- MÉTA-INFORMATIONS DE BASE -->
+    <!-- charset="UTF-8" : définit l'encodage des caractères (permet d'afficher les accents français correctement) -->
+    <meta charset="UTF-8">
+    
+    <!-- viewport : indique comment la page doit s'adapter aux écrans mobiles -->
+    <!-- width=device-width : la largeur de la page = largeur de l'écran -->
+    <!-- initial-scale=1.0 : niveau de zoom initial (100%) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- description : texte qui apparaît dans les résultats de recherche Google -->
+    <meta name="description" content="ANDRONIS ROBOTICS - Découvrez Voltaire One, l'automation élevée au rang d'art">
+    
+    <!-- title : titre qui apparaît dans l'onglet du navigateur -->
+    <title>ANDRONIS ROBOTICS - Voltaire One</title>
+
+    <!-- ============================================
+         PARTIE 4 : LIENS VERS LES FEUILLES DE STYLE EXTERNES
+         ============================================ -->
+    
+    <!-- Bootstrap CSS : Framework CSS qui fournit des classes prêtes à l'emploi -->
+    <!-- C'est une bibliothèque externe hébergée sur un CDN (Content Delivery Network) -->
+    <!-- Elle nous permet d'utiliser des classes comme "container", "row", "col-md-4", etc. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Google Fonts : Polices de caractères personnalisées -->
+    <!-- preconnect : établit une connexion précoce avec le serveur Google pour charger les polices plus rapidement -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Chargement des polices Cormorant Garamond (pour les titres) et Montserrat (pour le texte) -->
+    <!-- wght@300;400;600;700 : différentes épaisseurs de police disponibles (light, normal, semi-bold, bold) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ============================================
+         PARTIE 5 : STYLES CSS PERSONNALISÉS
+         ============================================ -->
+    <!-- La balise <style> contient du code CSS qui définit l'apparence visuelle de la page -->
+    <style>
+        
+        /* ============================================
+           VARIABLES CSS (Couleurs réutilisables)
+           ============================================ */
+        /* :root définit des variables CSS globales que nous pouvons réutiliser partout */
+        /* C'est comme créer des "couleurs nommées" pour éviter de répéter les codes couleur */
+        :root {
+            --bronze: #b8956a;  /* Couleur bronze principale du site */
+            --dark: #0a0a0a;     /* Couleur noire très foncée pour les arrière-plans */
+            --grey: #2d2d2d;     /* Couleur grise pour certaines sections */
+        }
+        
+        /* ============================================
+           STYLES GLOBAUX (appliqués à tout le site)
+           ============================================ */
+        /* body : style appliqué à tout le contenu visible de la page */
+        body { 
+            font-family: 'Montserrat', sans-serif;  /* Police Montserrat pour le texte */
+            background: #1a1a1a;                     /* Fond gris très foncé */
+            color: #f5f5f5;                          /* Texte blanc cassé */
+        }
+        
+        /* h1, h2, h3 : tous les titres utilisent la police Cormorant Garamond */
+        h1, h2, h3 { 
+            font-family: 'Cormorant Garamond', serif; 
+        }
+        
+        /* ============================================
+           STYLE DE LA SECTION HERO (Bannière principale)
+           ============================================ */
+        /* .hero : classe CSS pour la grande bannière en haut de la page */
+        .hero { 
+            min-height: 100vh;  /* Hauteur minimale = 100% de la hauteur de l'écran (viewport height) */
+            /* background : image de fond avec un dégradé sombre par-dessus pour améliorer la lisibilité */
+            background: linear-gradient(rgba(10,10,10,0.4), rgba(10,10,10,0.7)), url('assets/background_upscale.png') center/cover fixed; 
+        }
+        
+        /* Style spécifique pour le titre h1 dans la section hero */
+        .hero h1 { 
+            font-size: clamp(3rem, 8vw, 6rem);  /* Taille de police responsive (s'adapte à la largeur de l'écran) */
+            font-weight: 300;                     /* Police fine */
+            letter-spacing: 0.1em;                /* Espacement entre les lettres */
+            text-transform: uppercase;            /* Tout en majuscules */
+        }
+        
+        /* ============================================
+           STYLE DES BOUTONS BRONZE
+           ============================================ */
+        /* .btn-bronze : style pour les boutons avec couleur bronze */
+        .btn-bronze { 
+            background: var(--bronze);            /* Fond bronze (utilise la variable définie plus haut) */
+            color: var(--dark);                   /* Texte noir */
+            border: 2px solid var(--bronze);      /* Bordure bronze */
+            padding: 1rem 3rem;                   /* Espacement interne (haut/bas: 1rem, gauche/droite: 3rem) */
+            text-transform: uppercase;            /* Texte en majuscules */
+            letter-spacing: 0.1em;                /* Espacement entre les lettres */
+            font-weight: 600;                     /* Police semi-grasse */
+        }
+        
+        /* .btn-bronze:hover : style quand on survole le bouton avec la souris */
+        .btn-bronze:hover { 
+            background: transparent;              /* Fond transparent */
+            color: var(--bronze);                 /* Texte devient bronze */
+        }
+        
+        /* ============================================
+           CLASSES UTILITAIRES POUR LES COULEURS
+           ============================================ */
+        /* Ces classes peuvent être ajoutées à n'importe quel élément pour changer sa couleur */
+        .bg-dark-custom { background: var(--dark); }      /* Fond noir */
+        .bg-grey-custom { background: var(--grey); }      /* Fond gris */
+        .text-bronze { color: var(--bronze); }            /* Texte bronze */
+        
+        /* ============================================
+           STYLE DES ICÔNES CIRCULAIRES
+           ============================================ */
+        /* .icon-circle : crée un cercle avec une bordure bronze */
+        .icon-circle { 
+            width: 80px;                         /* Largeur de 80 pixels */
+            height: 80px;                        /* Hauteur de 80 pixels */
+            border: 2px solid var(--bronze);     /* Bordure bronze de 2 pixels */
+            border-radius: 50%;                  /* Transforme le carré en cercle */
+            margin: 0 auto 1.5rem;               /* Centré horizontalement, marge en bas */
+            position: relative;                  /* Permet de positionner des éléments à l'intérieur */
+        }
+        
+        /* ::before : crée un petit cercle bronze à l'intérieur du grand cercle */
+        .icon-circle::before { 
+            content: '';                          /* Contenu vide (juste pour créer l'élément) */
+            width: 40px;                          /* Largeur de 40 pixels */
+            height: 40px;                         /* Hauteur de 40 pixels */
+            background: var(--bronze);            /* Fond bronze */
+            border-radius: 50%;                   /* Forme circulaire */
+            position: absolute;                   /* Positionnement absolu par rapport au parent */
+            top: 50%;                             /* À 50% depuis le haut */
+            left: 50%;                            /* À 50% depuis la gauche */
+            transform: translate(-50%, -50%);     /* Centre parfaitement le cercle */
+        }
+        
+        /* ============================================
+           STYLE DE LA BORDURE BRONZE À GAUCHE
+           ============================================ */
+        /* .border-bronze-left : ajoute une bordure verticale bronze à gauche avec un espacement */
+        .border-bronze-left { 
+            border-left: 4px solid var(--bronze);  /* Bordure gauche de 4 pixels en bronze */
+            padding-left: 2rem;                    /* Espacement à gauche pour que le texte ne touche pas la bordure */
+        }
+        
+        /* ============================================
+           STYLE DE L'HEXAGONE
+           ============================================ */
+        /* .hexagone : crée une forme hexagonale (6 côtés) en bronze */
+        .hexagone { 
+            width: 20px;                          /* Largeur de 20 pixels */
+            height: 20px;                         /* Hauteur de 20 pixels */
+            background: var(--bronze);             /* Fond bronze */
+            /* clip-path : découpe la forme en hexagone en définissant 6 points */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); 
+        }
+        
+        /* ============================================
+           STYLE DES IMAGES SVG
+           ============================================ */
+        /* svg : les images SVG (graphiques vectoriels) sont affichées en bloc */
+        svg { 
+            display: block; 
+        }
+    </style>
+</head>
+
+<!-- ============================================
+     PARTIE 6 : CORPS DU DOCUMENT (BODY)
+     ============================================ -->
+<!-- La balise <body> contient tout le contenu visible de la page web -->
+<body>
+
+    <!-- ============================================
+         SECTION 1 : HERO (Bannière principale)
+         ============================================ -->
+    <!-- <section> : balise sémantique qui définit une section de la page -->
+    <!-- class="hero" : applique le style CSS .hero défini plus haut -->
+    <!-- Les classes Bootstrap utilisées :
+         - d-flex : active le mode flexbox (pour centrer le contenu)
+         - align-items-center : centre verticalement
+         - justify-content-center : centre horizontalement
+         - text-center : centre le texte
+         - text-white : couleur du texte en blanc -->
+    <section class="hero d-flex align-items-center justify-content-center text-center text-white">
+        
+        <!-- <div class="container"> : conteneur Bootstrap qui limite la largeur et centre le contenu -->
+        <div class="container">
+            
+            <!-- <h1> : titre principal de la page (le plus important) -->
+            <!-- class="mb-4" : marge en bas de 4 unités Bootstrap -->
+            <h1 class="mb-4">VOLTAIRE ONE</h1>
+            
+            <!-- <p> : paragraphe de texte -->
+            <!-- class="fs-4" : taille de police 4 (Bootstrap) -->
+            <!-- class="fw-light" : poids de police léger -->
+            <!-- class="mb-5" : marge en bas de 5 unités -->
+            <!-- style="letter-spacing: 0.05em;" : espacement entre les lettres (style inline) -->
+            <p class="fs-4 fw-light mb-5" style="letter-spacing: 0.05em;">L'automation élevée au rang d'art</p>
+            
+            <!-- <a> : lien cliquable (bouton) -->
+            <!-- href="#contact" : fait défiler la page jusqu'à l'élément avec id="contact" -->
+            <!-- class="btn btn-bronze" : applique les styles de bouton Bootstrap + notre style bronze personnalisé -->
+            <!-- class="text-decoration-none" : enlève le soulignement du lien -->
+            <a href="#contact" class="btn btn-bronze text-decoration-none">Réserver mon Voltaire</a>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2 : AVANTAGES (Présentation des caractéristiques)
+         ============================================ -->
+    <!-- class="bg-dark-custom" : applique le fond noir personnalisé -->
+    <!-- class="py-5" : padding vertical (haut et bas) de 5 unités Bootstrap -->
+    <section class="bg-dark-custom py-5">
+        
+        <!-- Conteneur Bootstrap pour limiter la largeur -->
+        <div class="container">
+            
+            <!-- <h2> : titre de section (niveau 2) -->
+            <!-- class="text-center" : centre le texte -->
+            <!-- class="display-4" : grande taille de police Bootstrap -->
+            <!-- class="mb-5" : marge en bas -->
+            <h2 class="text-center display-4 mb-5">Plus qu'une machine, une présence</h2>
+            
+            <!-- <div class="row"> : système de grille Bootstrap -->
+            <!-- La grille Bootstrap divise la page en 12 colonnes -->
+            <!-- Ici, nous créons une ligne qui contiendra 3 colonnes -->
+            <div class="row">
+                
+                <!-- COLONNE 1 : Intelligence Adaptative -->
+                <!-- class="col-md-4" : sur écrans moyens et plus grands, cette colonne prend 4/12 de la largeur (donc 3 colonnes = 12) -->
+                <!-- class="text-center" : centre le texte -->
+                <!-- class="p-4" : padding (espacement interne) de 4 unités -->
+                <div class="col-md-4 text-center p-4">
+                    
+                    <!-- Icône circulaire décorative -->
+                    <div class="icon-circle"></div>
+                    
+                    <!-- <h3> : sous-titre (niveau 3) -->
+                    <!-- class="text-bronze" : couleur bronze -->
+                    <!-- class="fs-2" : taille de police 2 -->
+                    <!-- class="fw-normal" : poids de police normal -->
+                    <!-- class="mb-3" : marge en bas -->
+                    <h3 class="text-bronze fs-2 fw-normal mb-3">Intelligence Adaptative</h3>
+                    
+                    <!-- Paragraphe descriptif -->
+                    <!-- style="opacity: 0.85;" : rend le texte légèrement transparent -->
+                    <p style="opacity: 0.85;">Doté de notre IA propriétaire "Cogito", Voltaire apprend de votre environnement en temps réel pour anticiper vos besoins domestiques ou industriels.</p>
+                </div>
+                
+                <!-- COLONNE 2 : Dextérité Horlogère -->
+                <!-- Même structure que la colonne 1 -->
+                <div class="col-md-4 text-center p-4">
+                    <div class="icon-circle"></div>
+                    <h3 class="text-bronze fs-2 fw-normal mb-3">Dextérité Horlogère</h3>
+                    <p style="opacity: 0.85;">Actionneurs de précision inspirés de la haute horlogerie, permettant des manipulations d'une finesse inégalée par la concurrence actuelle.</p>
+                </div>
+                
+                <!-- COLONNE 3 : Autonomie Fluide -->
+                <!-- Même structure que les colonnes précédentes -->
+                <div class="col-md-4 text-center p-4">
+                    <div class="icon-circle"></div>
+                    <h3 class="text-bronze fs-2 fw-normal mb-3">Autonomie Fluide</h3>
+                    <p style="opacity: 0.85;">Batterie structurelle haute densité offrant 20 heures d'activité continue. Se recharge là où vous êtes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3 : PRÉSENTATION (Histoire de l'entreprise)
+         ============================================ -->
+    <!-- class="bg-grey-custom" : fond gris personnalisé -->
+    <!-- class="position-relative" : permet de positionner des éléments enfants de manière absolue -->
+    <!-- class="overflow-hidden" : cache le contenu qui dépasse de la section -->
+    <section class="bg-grey-custom py-5 position-relative overflow-hidden">
+        
+        <!-- Image décorative en arrière-plan -->
+        <!-- <img> : balise pour afficher une image -->
+        <!-- src="assets/head_voltaire.svg" : chemin vers l'image -->
+        <!-- alt="..." : texte alternatif pour l'accessibilité (lu par les lecteurs d'écran) -->
+        <!-- class="position-absolute" : positionnement absolu (par rapport au parent position-relative) -->
+        <!-- class="bottom-0 start-0" : positionné en bas à gauche -->
+        <!-- class="d-none d-md-block" : masqué sur petits écrans, visible sur écrans moyens et plus -->
+        <!-- style="..." : styles inline pour la taille et l'opacité -->
+        <img src="assets/head_voltaire.svg" alt="Voltaire Robot Head" class="position-absolute bottom-0 start-0 d-none d-md-block" style="width: 45%; max-width: 850px; opacity: 1;">
+
+        <!-- Conteneur principal du contenu -->
+        <!-- class="position-relative" : nécessaire pour que le contenu soit au-dessus de l'image en arrière-plan -->
+        <div class="container position-relative">
+            
+            <!-- Logo centré -->
+            <!-- class="mx-auto" : marge automatique à gauche et droite (centre horizontalement) -->
+            <!-- class="text-center" : centre le texte -->
+            <!-- class="mb-4" : marge en bas -->
+            <div class="mx-auto text-center mb-4">
+                <!-- class="img-fluid" : rend l'image responsive (s'adapte à la taille de l'écran) -->
+                <img src="assets/letter_op.svg" alt="Andronis Robotics" class="img-fluid" style="max-width: 600px;">
+            </div>
+
+            <!-- Grille Bootstrap pour le contenu textuel -->
+            <div class="row">
+                
+                <!-- Colonne principale centrée -->
+                <!-- class="col-lg-8" : sur grands écrans, prend 8/12 de la largeur -->
+                <!-- class="offset-lg-2" : décale de 2 colonnes vers la droite (pour centrer) -->
+                <div class="col-lg-8 offset-lg-2">
+                    
+                    <!-- Titre de section -->
+                    <h2 class="display-4 mb-4">L'Héritage de l'Excellence</h2>
+                    
+                    <!-- Paragraphe 1 -->
+                    <!-- class="fs-5" : taille de police 5 -->
+                    <!-- class="lh-lg" : hauteur de ligne grande (espacement entre les lignes) -->
+                    <!-- class="mb-3" : marge en bas -->
+                    <p class="fs-5 lh-lg mb-3" style="opacity: 0.9;">
+                        Oubliez le plastique blanc utilitaire. Voltaire One est né de la convergence entre la technologie de pointe et le raffinement esthétique français.
+                    </p>
+                    
+                    <!-- Citation mise en évidence -->
+                    <!-- class="border-bronze-left" : applique la bordure bronze à gauche -->
+                    <!-- class="fst-italic" : texte en italique -->
+                    <!-- class="text-bronze" : couleur bronze -->
+                    <!-- class="fs-4" : taille de police 4 -->
+                    <!-- class="my-4" : marge verticale (haut et bas) de 4 unités -->
+                    <p class="border-bronze-left fst-italic text-bronze fs-4 my-4">
+                        "Conçu à Paris, assemblé dans nos ateliers en Rhône-Alpes"
+                    </p>
+                    
+                    <!-- Paragraphe 2 -->
+                    <p class="fs-5 lh-lg mb-3" style="opacity: 0.9;">
+                        Chaque unité est une fusion de matériaux nobles — aluminium de qualité aéronautique, accents de cuivre brossé et verre trempé — conçue pour s'intégrer harmonieusement dans les intérieurs les plus exigeants.
+                    </p>
+                    
+                    <!-- Paragraphe 3 -->
+                    <p class="fs-5 lh-lg mb-4" style="opacity: 0.9;">
+                        ANDRONIS ROBOTICS incarne l'excellence technologique française au service d'une vision humaniste : créer un robot qui accompagne, assiste et améliore la vie quotidienne tout en respectant la place de l'humain au centre de l'innovation.
+                    </p>
+                    
+                    <!-- Badge "Made in France" -->
+                    <!-- class="d-inline-flex" : affiche en ligne avec flexbox -->
+                    <!-- class="align-items-center" : centre verticalement les éléments -->
+                    <!-- class="gap-2" : espacement de 2 unités entre les éléments -->
+                    <!-- class="mt-4" : marge en haut -->
+                    <!-- class="px-4 py-3" : padding horizontal et vertical -->
+                    <!-- class="bg-dark-custom" : fond noir -->
+                    <!-- class="border border-1" : bordure fine -->
+                    <!-- class="text-bronze" : texte bronze -->
+                    <div class="d-inline-flex align-items-center gap-2 mt-4 px-4 py-3 bg-dark-custom border border-1 text-bronze" style="border-color: var(--bronze) !important; font-size: 0.9rem; letter-spacing: 0.05em;">
+                        <!-- Hexagone décoratif -->
+                        <div class="hexagone"></div>
+                        <!-- Texte du badge -->
+                        <span>Conception & Ingénierie Française</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4 : APPEL À L'ACTION (CTA - Contact/Réservation)
+         ============================================ -->
+    <!-- id="contact" : identifiant unique permettant de créer un lien vers cette section -->
+    <!-- Cette section est la destination du lien "#contact" dans le bouton hero -->
+    <section class="bg-dark-custom py-5 text-center text-white" id="contact">
+        
+        <div class="container">
+            
+            <!-- Titre de section -->
+            <h2 class="display-4 mb-4">Entrez dans l'ère Andronis</h2>
+            
+            <!-- Description -->
+            <p class="mb-3" style="opacity: 0.8;">Les premières unités "Founders Edition" sont disponibles en pré-commande limitée</p>
+            
+            <!-- Prix -->
+            <!-- class="fs-3" : grande taille de police -->
+            <!-- class="text-bronze" : couleur bronze -->
+            <!-- class="fw-semibold" : poids de police semi-gras -->
+            <!-- class="my-4" : marge verticale -->
+            <p class="fs-3 text-bronze fw-semibold my-4">À partir de 25 000 €</p>
+            
+            <!-- Information complémentaire -->
+            <!-- class="small" : petite taille de police -->
+            <!-- class="mb-5" : marge en bas -->
+            <p class="small mb-5" style="opacity: 0.7;">Acompte de réservation de 500 € remboursable</p>
+            
+            <!-- Bouton de réservation -->
+            <!-- href="mailto:..." : ouvre le client de messagerie avec une adresse email pré-remplie -->
+            <!-- class="btn btn-bronze" : style de bouton bronze -->
+            <!-- class="text-decoration-none" : enlève le soulignement -->
+            <!-- class="fs-5" : taille de police 5 -->
+            <!-- class="fw-bold" : poids de police gras -->
+            <!-- style="padding: 1.2rem 3.5rem;" : espacement interne personnalisé -->
+            <a href="mailto:contact@aeterna-robotics.fr" class="btn btn-bronze text-decoration-none fs-5 fw-bold" style="padding: 1.2rem 3.5rem;">Réserver Maintenant - Édition Fondateur</a>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5 : PIED DE PAGE (FOOTER)
+         ============================================ -->
+    <!-- <footer> : balise sémantique pour le pied de page -->
+    <!-- class="bg-dark-custom" : fond noir -->
+    <!-- class="text-center" : centre le texte -->
+    <!-- class="py-4" : padding vertical de 4 unités -->
+    <!-- class="text-white-50" : texte blanc avec 50% d'opacité -->
+    <footer class="bg-dark-custom text-center py-4 text-white-50">
+        
+        <div class="container">
+            
+            <!-- Copyright -->
+            <!-- <p> : paragraphe -->
+            <!-- class="mb-0" : marge en bas à 0 (pas d'espacement) -->
+            <!-- &copy; : symbole copyright (©) -->
+            <p class="mb-0">&copy; 2026 ANDRONIS ROBOTICS. Tous droits réservés. Fièrement conçu en France.</p>
+        </div>
+    </footer>
+
+<!-- ============================================
+     FIN DU CORPS DU DOCUMENT
+     ============================================ -->
+</body>
+
+<!-- ============================================
+     FIN DU DOCUMENT HTML
+     ============================================ -->
+</html>
